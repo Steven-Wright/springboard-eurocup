@@ -13,15 +13,15 @@ sudo mysql --defaults-file=/etc/mysql/debian.cnf
 
 Once logged in, I created a new database and enabled loading local data [after consulting stack overflow](https://stackoverflow.com/questions/59993844/error-loading-local-data-is-disabled-this-must-be-enabled-on-both-the-client).
 ```
-SET GLOBAL local_infile=1;
-CREATE SCHEMA euro_cup_2016
+mysql> SET GLOBAL local_infile=1;
+mysql> CREATE SCHEMA euro_cup_2016;
 ```
 
 ## Loading the data
 The file `load.sql` defines the tables and loads them from the .csv files.
 
 ```
-mysql -D euro_cup_2016 -p  --load-data-local-dir=. < load.sql
+$ mysql -D euro_cup_2016 -p  --load-data-local-dir=. < load.sql
 
 ```
 
